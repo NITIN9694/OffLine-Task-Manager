@@ -10,3 +10,5 @@ app.use("/auth", authRouter);
 app.listen(8000, () => {
     console.log("server running in 8000");
 })
+
+//todo setup drizzel for connect the db and to auth user

@@ -1,7 +1,7 @@
 import { Router, Request, Response } from "express";
 import { db } from "../db";
 import { eq } from "drizzle-orm";
-import bcryptjs from "bcryptjs";
+// import bcryptjs from "bcryptjs";
 import { users } from "./schema";
 import { NewUser } from "../router/schema";
 
@@ -25,13 +25,13 @@ authRouter.post("/singup", async (req: Request<{}, {}, singUp>, res: Response) =
             return;
         }
         //hash the passowrd 
-        const hashpassword = await bcryptjs.hash(password.toString(), 6);
+        // const hashpassword = await bcryptjs.hash(password.toString(), 6);
 
         //create new user and save in db
         const newUser: NewUser = {
             name,
             email,
-            password: hashpassword,
+            password,
         }
 
         const user = db.insert(users).values(newUser).returning();
